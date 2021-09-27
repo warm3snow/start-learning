@@ -1,3 +1,9 @@
 # ide
 .idea
 .vscode
+
+
+# test
+build
+*.test
+*.out
