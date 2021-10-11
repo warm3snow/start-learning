@@ -11,12 +11,14 @@ import (
 
 //softhsm2-util --init-token --slot 0 --label test --pin 1234
 
+var lib = "./libs/libsofthsm2.so"
+
 func TestNew(t *testing.T) {
 	_ = pkcs11.New("/usr/local/Cellar/softhsm/2.6.1/lib/softhsm/libsofthsm2.so")
 }
 
 func TestSHA1(t *testing.T) {
-	p := pkcs11.New("./libs/libsofthsm2.so")
+	p := pkcs11.New(lib)
 	assert.NotNil(t, p)
 
 	err := p.Initialize()
@@ -46,4 +48,24 @@ func TestSHA1(t *testing.T) {
 		fmt.Printf("%x", d)
 	}
 	fmt.Println()
+}
+
+func TestFindSlotLabel(t *testing.T) {
+	ctx := pkcs11.New(lib)
+	assert.NotNil(t, ctx)
+
+	err := ctx.Initialize()
+	assert.NoError(t, err)
+
+	slots, err := ctx.GetSlotList(true)
+	assert.NoError(t, err)
+	assert.NotEqual(t, 0, len(slots))
+
+	for i, s := range slots {
+		info, err := ctx.GetTokenInfo(s)
+		if err != nil {
+			continue
+		}
+		t.Logf("slot[%d], lable[%s]\n", i, info.Label)
+	}
 }
