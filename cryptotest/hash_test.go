@@ -5,9 +5,10 @@ import (
 	"crypto/elliptic"
 	"crypto/rand"
 	"crypto/sha256"
+	"testing"
+
 	"github.com/tjfoc/gmsm/sm2"
 	"github.com/tjfoc/gmsm/sm3"
-	"testing"
 )
 
 var (
