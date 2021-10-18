@@ -26,6 +26,7 @@ const testSecret = "HXDMVJECJJWSRB3HWIZR4IFUGFTMXBOZ" //base32-no-padding-encode
 func (m *GoogleAuthenticator2FaSha1) Totp() (code string, err error) {
 	count := uint64(time.Now().Unix()) / m.ExpireSecond
 	key, err := base32.StdEncoding.WithPadding(base32.NoPadding).DecodeString(m.Base32NoPaddingEncodedSecret)
+	fmt.Println("key=", string(key))
 	if err != nil {
 		return "", errors.New("https://github.com/google/google-authenticator/wiki/Key-Uri-Format,REQUIRED: The base32NoPaddingEncodedSecret parameter is an arbitrary key value encoded in Base32 according to RFC 3548. The padding specified in RFC 3548 section 2.2 is not required and should be omitted.")
 	}
