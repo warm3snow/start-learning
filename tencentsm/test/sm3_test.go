@@ -1,7 +1,6 @@
 package test
 
 import (
-	"chainmaker.org/gotest/cryptotest/tencentsm/base"
 	"fmt"
 	"testing"
 

@@ -1,10 +1,11 @@
 package test
 
 import (
-	"chainmaker.org/gotest/cryptotest/tencentsm/base"
 	"fmt"
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	"chainmaker.org/gotest/tencentsm/base"
+	"github.com/stretchr/testify/assert"
 
 	. "github.com/smartystreets/goconvey/convey"
 )

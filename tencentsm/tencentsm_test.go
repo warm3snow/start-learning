@@ -7,7 +7,7 @@ import (
 
 	tjx509 "github.com/tjfoc/gmsm/x509"
 
-	tsm2 "chainmaker.org/gotest/cryptotest/tencentsm/sm2"
+	tsm2 "chainmaker.org/gotest/tencentsm/sm2"
 	"github.com/stretchr/testify/assert"
 	"github.com/tjfoc/gmsm/sm2"
 )
@@ -18,7 +18,7 @@ var (
 )
 
 func TestSignAndVerify_10000(t *testing.T) {
-	total := 10000
+	total := 10
 	for i := 0; i < total; i++ {
 		// generate key pair using tj sm
 		sk, pk, err := tsm2.GenerateKeyPair()

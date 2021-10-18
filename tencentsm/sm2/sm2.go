@@ -3,11 +3,12 @@ package sm2
 import "C"
 import (
 	"bytes"
-	"chainmaker.org/gotest/cryptotest/tencentsm/base"
 	"crypto/elliptic"
 	"errors"
 	"fmt"
 	"math/big"
+
+	"chainmaker.org/gotest/tencentsm/base"
 )
 
 type PrivateKey struct {

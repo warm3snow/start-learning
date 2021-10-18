@@ -2,8 +2,9 @@ package sm3
 
 import "C"
 import (
-	"chainmaker.org/gotest/cryptotest/tencentsm/base"
 	"hash"
+
+	"chainmaker.org/gotest/tencentsm/base"
 )
 
 type digest struct {

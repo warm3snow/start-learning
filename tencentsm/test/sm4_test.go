@@ -1,9 +1,10 @@
 package test
 
 import (
-	"chainmaker.org/gotest/cryptotest/tencentsm/base"
 	"fmt"
 	"testing"
+
+	"chainmaker.org/gotest/tencentsm/base"
 
 	. "github.com/smartystreets/goconvey/convey"
 )

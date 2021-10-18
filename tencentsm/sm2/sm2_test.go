@@ -3,7 +3,8 @@ package sm2
 import (
 	"testing"
 
-	"chainmaker.org/gotest/cryptotest/tencentsm/sm3"
+	"chainmaker.org/gotest/tencentsm/sm3"
+
 	"github.com/spf13/viper"
 	tjsm3 "github.com/tjfoc/gmsm/sm3"
 	tjx509 "github.com/tjfoc/gmsm/x509"
