@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"testing"
 
+	"chainmaker.org/gotest/tencentsm/base"
+
 	. "github.com/smartystreets/goconvey/convey"
 )
 
