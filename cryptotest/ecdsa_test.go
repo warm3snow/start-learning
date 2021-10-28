@@ -7,9 +7,11 @@ import (
 	"crypto/sha256"
 	"encoding/hex"
 	"fmt"
-	"github.com/stretchr/testify/assert"
+	"log"
 	"math/big"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestP256Key(t *testing.T) {
@@ -38,4 +40,6 @@ func TestP256Key(t *testing.T) {
 		big.NewInt(0).SetBytes(yb),
 	}, digest[:], sig)
 	assert.True(t, ok)
+
+	log.Fatalf("failed to initialize pkcs11 handle, err = %s", err)
 }

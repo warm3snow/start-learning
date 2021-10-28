@@ -8,6 +8,7 @@ require (
 	github.com/miekg/pkcs11 v1.0.3
 	github.com/pkg/errors v0.9.1
 	github.com/smartystreets/goconvey v1.6.4
+	github.com/spacemonkeygo/openssl v0.0.0-20181017203307-c2dcc5cca94a // indirect
 	github.com/spf13/viper v1.9.0
 	github.com/stretchr/testify v1.7.0
 	github.com/tjfoc/gmsm v1.4.1
