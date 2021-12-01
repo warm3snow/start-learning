@@ -1,4 +1,4 @@
-package cryptotest
+package basic
 
 import (
 	"crypto/ecdsa"
