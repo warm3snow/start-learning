@@ -87,7 +87,7 @@ void secure_connect(const char* hostname) {
 int main() {
     init_ssl();
 
-    const char* hostname = "www.google.com:443";
+    const char* hostname = "www.baidu.com:443";
     fprintf(stderr, "Trying an HTTPS connection to %s...\n", hostname);
     secure_connect(hostname);
 

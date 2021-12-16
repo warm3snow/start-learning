@@ -108,7 +108,7 @@ func clientRun() {
 
 func Test(t *testing.T) {
 	go serverRun()
-	time.Sleep(1000000)
+	time.Sleep(1 * time.Second)
 	go clientRun()
 }
 
