@@ -17,6 +17,9 @@ import (
 )
 
 /*
+#cgo CFLAGS: -g -O2 -I/usr/local/include
+#cgo LDFLAGS: ${SRCDIR}/libssl.a ${SRCDIR}/libcrypto.a -ldl
+
 #include "stdio.h"
 #include "openssl/ssl.h"
 #include "openssl/pkcs12.h"
