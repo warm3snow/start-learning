@@ -133,7 +133,8 @@ void * gmssl_ssl_connect(int fd) {
 	ret = SSL_connect(ssl);
 	if (ret == -1) {
 		printf("ssl connect failed ret %d %s\n", ret, SSL_state_string_long(ssl));
-		ERR_print_errors_fp(stderr);
+		//ERR_print_errors_fp(stderr);
+		printf(stderr);
 		if (reuse_session) {
 			SSL_SESSION_free(reuse_session);
 			reuse_session = NULL;
@@ -174,7 +175,9 @@ void gmssl_destroy_ctx(void) {
 
 
 void go_gmssl_set_cert(void *cert_file, int cert_file_len, void *cert_file_enc, int cert_file_len_enc, void *ca_file, int ca_file_len, void *password, int password_len) {
-        char cert_file_str[1024] = {0,};
+		gmssl_init(1);
+
+		char cert_file_str[1024] = {0,};
         char cert_file_str_enc[1024] = {0,};
         char ca_file_str[1024] = {0,};
         char password_str[1024] = {0,};
@@ -183,8 +186,6 @@ void go_gmssl_set_cert(void *cert_file, int cert_file_len, void *cert_file_enc, 
         memcpy(ca_file_str, ca_file, ca_file_len >= 1024 ? 1023 : ca_file_len);
         memcpy(password_str, password, password_len >= 1024 ? 1023 : password_len);
         gmssl_set_cert2(cert_file_str, cert_file_str_enc, ca_file_str, password_str);
-
-		gmssl_init(1);
 }
 
 int gmssl_socket_connect(void *server, int port) {
@@ -375,8 +376,6 @@ func GmDial(_, addr string) (net.Conn, error) {
 	sslConn.connState = 0
 	sslConn.connMutex = sync.Mutex{}
 	sslConn.ref = 0
-
-	C.gmssl_init()
 
 	now := time.Now()
 	sslConn.deadline = now.Add(time.Hour)
