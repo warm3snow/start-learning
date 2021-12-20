@@ -8,7 +8,6 @@ import (
 	"io/ioutil"
 	"net"
 	"net/http"
-	"os"
 	"strconv"
 	"strings"
 	"sync"
@@ -184,6 +183,8 @@ void go_gmssl_set_cert(void *cert_file, int cert_file_len, void *cert_file_enc, 
         memcpy(ca_file_str, ca_file, ca_file_len >= 1024 ? 1023 : ca_file_len);
         memcpy(password_str, password, password_len >= 1024 ? 1023 : password_len);
         gmssl_set_cert2(cert_file_str, cert_file_str_enc, ca_file_str, password_str);
+
+		gmssl_init(1)
 }
 
 int gmssl_socket_connect(void *server, int port) {
@@ -224,17 +225,9 @@ func main() {
 	// 客户端加密证书
 	certFile2 := "./ce.p12"
 	// 证书加密密码
-	XgsCertPassword := "xxxxxx"
+	XgsCertPassword := "123456"
 	// 访问地址
 	url := "http://10.75.2.245:443"
-
-	_, caErr := os.Stat(caFile)
-	_, certErr := os.Stat(certFile)
-	_, certErr2 := os.Stat(certFile2)
-
-	fmt.Println(caErr)
-	fmt.Println(certErr)
-	fmt.Println(certErr2)
 
 	SetCert(caFile, certFile, certFile2, XgsCertPassword)
 	client := CreateHttp()
