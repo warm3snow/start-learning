@@ -134,7 +134,7 @@ void * gmssl_ssl_connect(int fd) {
 	ret = SSL_connect(ssl);
 	if (ret == -1) {
 		printf("ssl connect failed ret %d %s\n", ret, SSL_state_string_long(ssl));
-		printf(stderr);
+		ERR_print_errors_fp(stderr);
 		if (reuse_session) {
 			SSL_SESSION_free(reuse_session);
 			reuse_session = NULL;
