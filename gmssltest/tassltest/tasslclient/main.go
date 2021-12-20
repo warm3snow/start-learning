@@ -184,7 +184,7 @@ void go_gmssl_set_cert(void *cert_file, int cert_file_len, void *cert_file_enc, 
         memcpy(password_str, password, password_len >= 1024 ? 1023 : password_len);
         gmssl_set_cert2(cert_file_str, cert_file_str_enc, ca_file_str, password_str);
 
-		gmssl_init(1)
+		gmssl_init(1);
 }
 
 int gmssl_socket_connect(void *server, int port) {
