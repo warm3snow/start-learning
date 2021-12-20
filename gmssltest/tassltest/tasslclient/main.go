@@ -18,7 +18,8 @@ import (
 
 /*
 #cgo CFLAGS: -g -O2 -I/usr/local/include
-#cgo LDFLAGS: ${SRCDIR}/libssl.a ${SRCDIR}/libcrypto.a -ldl
+#cgo darwin LDFLAGS: ${SRCDIR}/../tassl/darwin/libssl.a ${SRCDIR}/../tassl/darwin/libcrypto.a -ldl
+#cgo linux LDFLAGS: ${SRCDIR}/../tassl/linux/libssl.a ${SRCDIR}/../tassl/linux/libcrypto.a -ldl
 
 #include "stdio.h"
 #include "openssl/ssl.h"
