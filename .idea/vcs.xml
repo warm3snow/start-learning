@@ -2,6 +2,8 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/grpctest/piligotest/gmssl-sample" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/grpctest/piligotest/gmssl-sample/gmssl" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/tassltest/gmssl_client" vcs="Git" />
   </component>
 </project>

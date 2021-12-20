@@ -52,8 +52,8 @@ import (
 	"fmt"
 	"testing"
 
-	"chainmaker.org/gotest/gmssl/gmssl"
-	"chainmaker.org/gotest/gmssl/gmssl/sm3"
+	"chainmaker.org/gotest/opencrypto/gmssl/gmssl"
+	"chainmaker.org/gotest/opencrypto/gmssl/gmssl/sm3"
 )
 
 // nolint

@@ -10,9 +10,9 @@ import (
 
 	tjsm2 "github.com/tjfoc/gmsm/sm2"
 
-	gmsslsm2 "chainmaker.org/gotest/gmssl/sm2"
+	gmsslsm2 "chainmaker.org/gotest/opencrypto/gmssl/sm2"
 
-	txsm2 "chainmaker.org/gotest/tencentsm/sm2"
+	txsm2 "chainmaker.org/gotest/opencrypto/tencentsm/sm2"
 
 	hfsm2 "github.com/Hyperledger-TWGC/tjfoc-gm/sm2"
 	hfx509 "github.com/Hyperledger-TWGC/tjfoc-gm/x509"

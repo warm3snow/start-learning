@@ -7,7 +7,7 @@ import (
 
 	tjx509 "github.com/tjfoc/gmsm/x509"
 
-	tsm2 "chainmaker.org/gotest/tencentsm/sm2"
+	tsm2 "chainmaker.org/gotest/opencrypto/tencentsm/sm2"
 	"github.com/stretchr/testify/assert"
 	"github.com/tjfoc/gmsm/sm2"
 )

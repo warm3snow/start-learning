@@ -8,8 +8,8 @@ import (
 	"chainmaker.org/chainmaker/common/v2/crypto"
 	"chainmaker.org/chainmaker/common/v2/crypto/hash"
 
-	"chainmaker.org/gotest/gmssl/gmssl"
-	"chainmaker.org/gotest/gmssl/sm3"
+	"chainmaker.org/gotest/opencrypto/gmssl/gmssl"
+	"chainmaker.org/gotest/opencrypto/gmssl/sm3"
 )
 
 type PrivateKey struct {

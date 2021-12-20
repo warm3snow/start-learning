@@ -1,7 +1,7 @@
 package sm2
 
 import "C"
-import "chainmaker.org/gotest/tencentsm/base"
+import "chainmaker.org/gotest/opencrypto/tencentsm/base"
 
 const SM2_DEFAULT_USER_ID = "1234567812345678"
 

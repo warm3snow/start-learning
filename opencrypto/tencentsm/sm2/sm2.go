@@ -8,7 +8,7 @@ import (
 	"fmt"
 	"math/big"
 
-	"chainmaker.org/gotest/tencentsm/base"
+	"chainmaker.org/gotest/opencrypto/tencentsm/base"
 )
 
 type PrivateKey struct {

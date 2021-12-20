@@ -4,7 +4,7 @@ import "C"
 import (
 	"hash"
 
-	"chainmaker.org/gotest/tencentsm/base"
+	"chainmaker.org/gotest/opencrypto/tencentsm/base"
 )
 
 type digest struct {

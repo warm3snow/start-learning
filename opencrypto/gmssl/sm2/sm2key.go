@@ -6,7 +6,7 @@ import (
 	"encoding/pem"
 	"errors"
 
-	"chainmaker.org/gotest/gmssl/gmssl"
+	"chainmaker.org/gotest/opencrypto/gmssl/gmssl"
 )
 
 // MarshalPublicKey public key conversion

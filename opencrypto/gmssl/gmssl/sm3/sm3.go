@@ -51,7 +51,7 @@ package sm3
 import (
 	"hash"
 
-	"chainmaker.org/gotest/gmssl/gmssl"
+	"chainmaker.org/gotest/opencrypto/gmssl/gmssl"
 )
 
 type digest struct {

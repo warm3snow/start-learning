@@ -7,7 +7,7 @@ import (
 	"runtime"
 	"sync"
 
-	"chainmaker.org/gotest/tencentsm/base"
+	"chainmaker.org/gotest/opencrypto/tencentsm/base"
 
 	"github.com/spf13/viper"
 )

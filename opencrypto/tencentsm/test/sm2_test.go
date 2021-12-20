@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"testing"
 
-	"chainmaker.org/gotest/tencentsm/base"
+	"chainmaker.org/gotest/opencrypto/tencentsm/base"
 	"github.com/stretchr/testify/assert"
 
 	. "github.com/smartystreets/goconvey/convey"

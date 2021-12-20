@@ -1,4 +1,4 @@
-package grpctest
+package cmtest
 
 import (
 	"io/ioutil"

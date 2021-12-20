@@ -5,7 +5,7 @@ import (
 	"encoding/pem"
 	"io"
 
-	"chainmaker.org/gotest/gmssl/gmssl"
+	"chainmaker.org/gotest/opencrypto/gmssl/gmssl"
 
 	"github.com/pkg/errors"
 	tjx509 "github.com/tjfoc/gmsm/x509"
