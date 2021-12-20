@@ -220,9 +220,9 @@ func main() {
 	// CA证书
 	caFile := "./ca.crt"
 	// 客户端证书
-	certFile := "./client.p12"
+	certFile := "./cs.p12"
 	// 客户端加密证书
-	certFile2 := "./client_enc.p12"
+	certFile2 := "./ce.p12"
 	// 证书加密密码
 	XgsCertPassword := "xxxxxx"
 	// 访问地址
@@ -382,6 +382,8 @@ func GmDial(_, addr string) (net.Conn, error) {
 	sslConn.connState = 0
 	sslConn.connMutex = sync.Mutex{}
 	sslConn.ref = 0
+
+	C.gmssl_init()
 
 	now := time.Now()
 	sslConn.deadline = now.Add(time.Hour)
