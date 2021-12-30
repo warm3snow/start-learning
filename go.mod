@@ -12,7 +12,7 @@ require (
 	github.com/spacemonkeygo/openssl v0.0.0-20181017203307-c2dcc5cca94a
 	github.com/stretchr/testify v1.7.0
 	github.com/tjfoc/gmsm v1.4.2-0.20211201010834-02e00ad77028
-	github.com/warm3snow/gmsm v0.0.0-20211223101315-df5a0b76d1dc
+	github.com/warm3snow/gmsm v0.0.0-20211230064339-f49961647287
 	golang.org/x/crypto v0.0.0-20210817164053-32db794688a5 // indirect
 	golang.org/x/net v0.0.0-20210503060351-7fd8e65b6420
 	golang.org/x/sys v0.0.0-20210823070655-63515b42dcdf // indirect

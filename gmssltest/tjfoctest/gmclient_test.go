@@ -9,11 +9,6 @@ import (
 	"github.com/warm3snow/gmsm/gmtls"
 	"github.com/warm3snow/gmsm/x509"
 
-	//"github.com/Hyperledger-TWGC/tjfoc-gm/gmtls"
-	//"github.com/Hyperledger-TWGC/tjfoc-gm/x509"
-	//"github.com/tjfoc/gmsm/gmtls"
-	//"github.com/tjfoc/gmsm/x509"
-
 	cmtls "chainmaker.org/chainmaker/common/v2/crypto/tls"
 )
 

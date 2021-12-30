@@ -363,6 +363,8 @@ github.com/urfave/cli v1.20.0/go.mod h1:70zkFmudgCuE/ngEzBv17Jvp/497gISqfk5gWijb
 github.com/urfave/cli v1.22.1/go.mod h1:Gos4lmkARVdJ6EkW0WaNv/tZAAMe9V7XWyB60NtXRu0=
 github.com/warm3snow/gmsm v0.0.0-20211223101315-df5a0b76d1dc h1:UNs9A10yDQjyOGTeAgdu458w7B+hIK9JrRwztZlgR7E=
 github.com/warm3snow/gmsm v0.0.0-20211223101315-df5a0b76d1dc/go.mod h1:TGzLQ7+JCtGjH0JoLxh2q1ChzlgkVh4ZQwnrUlSzHNs=
+github.com/warm3snow/gmsm v0.0.0-20211230064339-f49961647287 h1:BWAu4EP+URqBuPNv/Di/Xr9binmiJHkDLDlYjzEH3xA=
+github.com/warm3snow/gmsm v0.0.0-20211230064339-f49961647287/go.mod h1:TGzLQ7+JCtGjH0JoLxh2q1ChzlgkVh4ZQwnrUlSzHNs=
 github.com/xiang90/probing v0.0.0-20190116061207-43a291ad63a2/go.mod h1:UETIi67q53MR2AWcXfiuqkDkRtnGDLqkBTpCHuJHxtU=
 github.com/yuin/goldmark v1.1.27/go.mod h1:3hX8gzYuyVAZsxl0MRgGTJEmQBFcNTphYh9decYSb74=
 github.com/yuin/goldmark v1.2.1/go.mod h1:3hX8gzYuyVAZsxl0MRgGTJEmQBFcNTphYh9decYSb74=
