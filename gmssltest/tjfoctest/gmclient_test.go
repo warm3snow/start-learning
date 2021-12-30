@@ -1,8 +1,10 @@
 package gmcredentials
 
 import (
+	"fmt"
 	"io/ioutil"
 	"testing"
+	"time"
 
 	"github.com/stretchr/testify/assert"
 
@@ -49,21 +51,13 @@ func TestGmClient(t *testing.T) {
 	assert.NoError(t, err)
 	defer conn.Close()
 
-	req := []byte("GET / HTTP/1.1\r\n" +
-		"Host: localhost\r\n" +
-		"Connection: close\r\n\r\n")
-	_, _ = conn.Write(req)
-	//buff := make([]byte, 1024)
-	//for {
-	//	n, _ := conn.Read(buff)
-	//	if n <= 0 {
-	//		break
-	//	} else {
-	//		fmt.Printf("%s", buff[0:n])
-	//	}
-	//}
-	//fmt.Println(">> SM2_SM4_GCM_SM3 suite [PASS]")
-	//end <- true
+	for i := 0; i < 10; i++ {
+		req := []byte(fmt.Sprintf("hello chainmaker%d\n", i))
+		_, _ = conn.Write(req)
+
+		time.Sleep(time.Second * 3)
+	}
+	fmt.Println(">> SM2_SM4_GCM_SM3 suite [PASS]")
 }
 
 func TestLoadX509KeyPair(t *testing.T) {
