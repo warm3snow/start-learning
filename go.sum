@@ -361,12 +361,6 @@ github.com/tjfoc/gmsm v1.4.2-0.20211201010834-02e00ad77028/go.mod h1:j4INPkHWMrh
 github.com/tmc/grpc-websocket-proxy v0.0.0-20170815181823-89b8d40f7ca8/go.mod h1:ncp9v5uamzpCO7NfCPTXjqaC+bZgJeR0sMTm6dMHP7U=
 github.com/urfave/cli v1.20.0/go.mod h1:70zkFmudgCuE/ngEzBv17Jvp/497gISqfk5gWijbERA=
 github.com/urfave/cli v1.22.1/go.mod h1:Gos4lmkARVdJ6EkW0WaNv/tZAAMe9V7XWyB60NtXRu0=
-github.com/warm3snow/gmsm v0.0.0-20211223081326-773fe2674d32 h1:9EgNIZlRHGJJIJtkjZTvH7WnqLNcZGvZwKoYZzCdO40=
-github.com/warm3snow/gmsm v0.0.0-20211223081326-773fe2674d32/go.mod h1:TGzLQ7+JCtGjH0JoLxh2q1ChzlgkVh4ZQwnrUlSzHNs=
-github.com/warm3snow/gmsm v0.0.0-20211223101315-df5a0b76d1dc h1:UNs9A10yDQjyOGTeAgdu458w7B+hIK9JrRwztZlgR7E=
-github.com/warm3snow/gmsm v0.0.0-20211223101315-df5a0b76d1dc/go.mod h1:TGzLQ7+JCtGjH0JoLxh2q1ChzlgkVh4ZQwnrUlSzHNs=
-github.com/warm3snow/gmsm v0.0.0-20211230064339-f49961647287 h1:BWAu4EP+URqBuPNv/Di/Xr9binmiJHkDLDlYjzEH3xA=
-github.com/warm3snow/gmsm v0.0.0-20211230064339-f49961647287/go.mod h1:TGzLQ7+JCtGjH0JoLxh2q1ChzlgkVh4ZQwnrUlSzHNs=
 github.com/warm3snow/gmsm v0.0.0-20211230075704-06afd4a5ba8c h1:xJUw9WKRrT7EY+vjkd4Iapli6SkLLrLahX1RNomfk7E=
 github.com/warm3snow/gmsm v0.0.0-20211230075704-06afd4a5ba8c/go.mod h1:TGzLQ7+JCtGjH0JoLxh2q1ChzlgkVh4ZQwnrUlSzHNs=
 github.com/xiang90/probing v0.0.0-20190116061207-43a291ad63a2/go.mod h1:UETIi67q53MR2AWcXfiuqkDkRtnGDLqkBTpCHuJHxtU=
