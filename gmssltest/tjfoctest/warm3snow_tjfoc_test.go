@@ -13,6 +13,8 @@ import (
 	"github.com/warm3snow/gmsm/x509"
 
 	cmtls "chainmaker.org/chainmaker/common/v2/crypto/tls"
+	//gmtls "chainmaker.org/chainmaker/common/v2/crypto/tls"
+	//"chainmaker.org/chainmaker/common/v2/crypto/x509"
 )
 
 var (
@@ -36,13 +38,18 @@ func TestGmServer(t *testing.T) {
 	encCert, err := gmtls.LoadX509KeyPair(seCert, seKey)
 	assert.NoError(t, err)
 
+	// 信任的根证书
 	certPool := x509.NewCertPool()
-	certPool.AppendCertsFromPEM([]byte(caCert))
+	cacert, err := ioutil.ReadFile(caCert)
+	assert.NoError(t, err)
+	certPool.AppendCertsFromPEM(cacert)
 
 	config := &gmtls.Config{
 		GMSupport:    &gmtls.GMSupport{},
 		Certificates: []gmtls.Certificate{sigCert, encCert},
-		RootCAs:      certPool,
+		//RootCAs:      certPool,
+		ClientCAs:  certPool,
+		ClientAuth: gmtls.RequireAndVerifyClientCert,
 	}
 
 	ln, err := gmtls.Listen("tcp", ":44330", config)
@@ -69,8 +76,8 @@ func TestGmClient(t *testing.T) {
 	certPool := x509.NewCertPool()
 	cacert, err := ioutil.ReadFile(caCert)
 	assert.NoError(t, err)
-
 	certPool.AppendCertsFromPEM(cacert)
+
 	cs, err := gmtls.LoadX509KeyPair(csCert, csKey)
 	assert.NoError(t, err)
 	ce, err := gmtls.LoadX509KeyPair(ceCert, ceKey)
@@ -80,10 +87,11 @@ func TestGmClient(t *testing.T) {
 		GMSupport:    &gmtls.GMSupport{},
 		RootCAs:      certPool,
 		Certificates: []gmtls.Certificate{cs, ce},
-		CipherSuites: []uint16{gmtls.GMTLS_SM2_WITH_SM4_SM3},
+		CipherSuites: []uint16{gmtls.GMTLS_ECC_SM4_CBC_SM3},
+		//CipherSuites: []uint16{gmtls.GMTLS_SM2_WITH_SM4_SM3},
 		//CipherSuites: []uint16{gmtls.GMTLS_ECDHE_SM2_WITH_SM4_SM3},
-		ServerName: "server sign (SM2)",
-		//InsecureSkipVerify: true,
+		ServerName:         "server sign (SM2)",
+		InsecureSkipVerify: false,
 	}
 
 	conn, err := gmtls.Dial("tcp", "localhost:44330", config)
@@ -103,15 +111,15 @@ func TestGmClient(t *testing.T) {
 		"Connection: close\r\n\r\n")
 	conn.Write(req)
 
-	buff := make([]byte, 1024)
-	for {
-		n, _ := conn.Read(buff)
-		if n <= 0 {
-			break
-		} else {
-			fmt.Printf("%s", buff[0:n])
-		}
-	}
+	//buff := make([]byte, 1024)
+	//for {
+	//	n, _ := conn.Read(buff)
+	//	if n <= 0 {
+	//		break
+	//	} else {
+	//		fmt.Printf("%s", buff[0:n])
+	//	}
+	//}
 
 	fmt.Println(">> SM2_SM4_GCM_SM3 suite [PASS]")
 }
