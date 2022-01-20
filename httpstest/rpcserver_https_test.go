@@ -1,8 +1,11 @@
 package httpstest
 
 import (
+	"crypto/tls"
+	"crypto/x509"
 	"fmt"
 	"io/ioutil"
+	"log"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -17,7 +20,7 @@ var (
 	adminTlsCrt = "./testdata/admin1.tls.crt"
 )
 
-func TestChainmaker_rpcserver_https_getversion_test(t *testing.T) {
+func TestChainmaker_rpcserver_GM_https_getversion(t *testing.T) {
 	// 信任的根证书
 	certPool := cmx509.NewCertPool()
 	cacert, err := ioutil.ReadFile(caCert)
@@ -55,4 +58,36 @@ func TestChainmaker_rpcserver_https_getversion_test(t *testing.T) {
 			fmt.Printf("%s", buff[0:n])
 		}
 	}
+}
+
+func TestChainmaker_rpcserver_https_getversion(t *testing.T) {
+	// 信任的根证书
+	certPool := x509.NewCertPool()
+	cacert, err := ioutil.ReadFile(caCert)
+	assert.NoError(t, err)
+	certPool.AppendCertsFromPEM(cacert)
+
+	cert, err := tls.LoadX509KeyPair(adminTlsCrt, adminTlsKey)
+
+	config := &tls.Config{
+		//GMSupport:    &cmtls.GMSupport{},
+		RootCAs:      certPool,
+		Certificates: []tls.Certificate{cert},
+	}
+
+	conn, err := tls.Dial("tcp", "localhost:12301", config)
+	if err != nil {
+		panic(err)
+	}
+	defer conn.Close()
+
+	req := []byte("GET /v1/getversion HTTP/1.1\r\n" +
+		"Host: localhost\r\n" +
+		"Connection: close\r\n\r\n")
+	_, _ = conn.Write(req)
+
+	buff := make([]byte, 1024)
+	n, err := conn.Read(buff)
+	assert.NoError(t, err)
+	log.Println(string(buff[:n]))
 }
