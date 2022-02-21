@@ -1,4 +1,4 @@
-package httpstest
+package chainmakertest
 
 import (
 	"fmt"

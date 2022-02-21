@@ -6,6 +6,7 @@ require (
 	chainmaker.org/chainmaker/common/v2 v2.1.2-0.20220127064703-4da19a869e9d
 	github.com/Hyperledger-TWGC/tjfoc-gm v1.4.1-0.20210806094929-4b29e6230155
 	github.com/golang/protobuf v1.5.2
+	github.com/gorilla/websocket v1.4.3-0.20220104015952-9111bb834a68
 	github.com/miekg/pkcs11 v1.0.3
 	github.com/spacemonkeygo/openssl v0.0.0-20181017203307-c2dcc5cca94a
 	github.com/stretchr/testify v1.7.0
