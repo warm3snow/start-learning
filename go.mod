@@ -3,7 +3,7 @@ module chainmaker.org/gotest
 go 1.16
 
 require (
-	chainmaker.org/chainmaker/common/v2 v2.1.2-0.20220127064703-4da19a869e9d
+	chainmaker.org/chainmaker/common/v2 v2.1.2-0.20220225072323-3fdaa330fb0a
 	github.com/Hyperledger-TWGC/tjfoc-gm v1.4.1-0.20210806094929-4b29e6230155
 	github.com/golang/protobuf v1.5.2
 	github.com/gorilla/websocket v1.4.3-0.20220104015952-9111bb834a68

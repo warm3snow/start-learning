@@ -2,17 +2,31 @@ package tbass_test
 
 import (
 	"crypto/ecdsa"
-	"crypto/rand"
+	"crypto/rsa"
+	gox509 "crypto/x509"
+	"crypto/x509/pkix"
+	"encoding/asn1"
 	"encoding/hex"
 	"encoding/pem"
+	"fmt"
 	"log"
 	"testing"
+
+	"chainmaker.org/chainmaker/common/v2/crypto/asym"
+
+	tjx509 "github.com/tjfoc/gmsm/x509"
+
+	cmecdsa "chainmaker.org/chainmaker/common/v2/crypto/asym/ecdsa"
+	cmrsa "chainmaker.org/chainmaker/common/v2/crypto/asym/rsa"
+	cmsm2 "chainmaker.org/chainmaker/common/v2/crypto/asym/sm2"
+	"github.com/btcsuite/btcd/btcec"
 
 	bccrypto "chainmaker.org/chainmaker/common/v2/crypto"
 
 	"github.com/stretchr/testify/assert"
 
 	"chainmaker.org/chainmaker/common/v2/crypto/x509"
+	tjsm2 "github.com/tjfoc/gmsm/sm2"
 )
 
 func TestClientSign(t *testing.T) {
@@ -43,6 +57,12 @@ MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQg69kMkjNa5t+Cq1Sy
 esY+U37QeU805Fr0EW5N+oZFwyqhRANCAATcYbNpdR+1S3FSksvTP/U7V7aLGuC+
 JVFPtHp2bIAYHkJKxz4pHw0LA7VoYWldkAFvb6zZkfbBmLNs/bokp/6T
 -----END PRIVATE KEY-----`
+	//	clientKey := `-----BEGIN PRIVATE KEY-----
+	//MIGTAgEAMBMGByqGSM49AgEGCCqBHM9VAYItBHkwdwIBAQQg7ZpeoikwYhv1IL0d
+	//IBnSvAQ/Rxnrf8naZB8qwgeOqdigCgYIKoEcz1UBgi2hRANCAAQA06EHIXfBLncL
+	//xrLT48O5r/8IGLxWsozzRO0xSLie1iDOB/r74EiJGUWtBwtEvO/ctDs/Rp6ZPjXd
+	//xehwSxM/
+	//-----END PRIVATE KEY-----`
 
 	block, _ := pem.Decode([]byte(clientCrt))
 
@@ -68,14 +88,96 @@ JVFPtHp2bIAYHkJKxz4pHw0LA7VoYWldkAFvb6zZkfbBmLNs/bokp/6T
 	//sign, verify
 	println("=================")
 	block, _ = pem.Decode([]byte(clientKey))
-	key, err := x509.ParsePKCS8PrivateKey(block.Bytes)
-	assert.NoError(t, err)
+	//key, err := asym.PrivateKeyFromDER(block.Bytes)
+	//assert.NoError(t, err)
 
-	ecKey, _ := key.(*ecdsa.PrivateKey)
-	sig1, err := ecKey.Sign(rand.Reader, plainBytes, nil)
-	ok, err = pub.VerifyWithOpts(plainBytes, sig1, &bccrypto.SignOpts{
-		Hash: hashAlgo,
-	})
+	//sig1, err := key.SignWithOpts(plainBytes, &bccrypto.SignOpts{
+	//	Hash: hashAlgo,
+	//})
+	//ok, err = pub.VerifyWithOpts(plainBytes, sig1, &bccrypto.SignOpts{
+	//	Hash: hashAlgo,
+	//})
+	//assert.NoError(t, err)
+	//assert.True(t, ok)
+}
+
+type pkcs8 struct {
+	Version    int
+	Algo       pkix.AlgorithmIdentifier
+	PrivateKey []byte
+}
+
+var oidSM2 = asn1.ObjectIdentifier{1, 2, 840, 10045, 2, 1}
+
+func PrivateKeyFromDER(der []byte) (bccrypto.PrivateKey, error) {
+	if key, err := x509.ParsePKCS1PrivateKey(der); err == nil {
+		return &cmrsa.PrivateKey{K: key}, nil
+	}
+
+	if key, err := x509.ParseECPrivateKey(der); err == nil {
+		if key.Curve == tjsm2.P256Sm2() {
+			k := &tjsm2.PrivateKey{
+				PublicKey: tjsm2.PublicKey{
+					Curve: tjsm2.P256Sm2(),
+					X:     key.X,
+					Y:     key.Y,
+				},
+				D: key.D,
+			}
+			return &cmsm2.PrivateKey{K: k}, nil
+		} else {
+			return &cmecdsa.PrivateKey{K: key}, nil
+		}
+	}
+
+	if key, err := gox509.ParsePKCS8PrivateKey(der); err == nil {
+		switch k := key.(type) {
+		case *ecdsa.PrivateKey:
+			return &cmecdsa.PrivateKey{K: k}, nil
+		case *tjsm2.PrivateKey:
+			return &cmsm2.PrivateKey{K: k}, nil
+		case *rsa.PrivateKey:
+			return &cmrsa.PrivateKey{K: k}, nil
+		case bccrypto.PrivateKey:
+			return k, nil
+		default:
+			return nil, fmt.Errorf("fail to parse private key, unrecognized key type [%T]", key)
+		}
+	}
+	if key, err := tjx509.ParsePKCS8UnecryptedPrivateKey(der); err == nil {
+		return &cmsm2.PrivateKey{K: key}, nil
+	}
+
+	Secp256k1Key, _ := btcec.PrivKeyFromBytes(btcec.S256(), der)
+	key := Secp256k1Key.ToECDSA()
+	return &cmecdsa.PrivateKey{K: key}, nil
+}
+func TestPKCS8(t *testing.T) {
+	clientKey1 := `-----BEGIN PRIVATE KEY-----
+MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQg69kMkjNa5t+Cq1Sy
+esY+U37QeU805Fr0EW5N+oZFwyqhRANCAATcYbNpdR+1S3FSksvTP/U7V7aLGuC+
+JVFPtHp2bIAYHkJKxz4pHw0LA7VoYWldkAFvb6zZkfbBmLNs/bokp/6T
+-----END PRIVATE KEY-----`
+	clientKey2 := `-----BEGIN PRIVATE KEY-----
+MIGTAgEAMBMGByqGSM49AgEGCCqBHM9VAYItBHkwdwIBAQQg7ZpeoikwYhv1IL0d
+IBnSvAQ/Rxnrf8naZB8qwgeOqdigCgYIKoEcz1UBgi2hRANCAAQA06EHIXfBLncL
+xrLT48O5r/8IGLxWsozzRO0xSLie1iDOB/r74EiJGUWtBwtEvO/ctDs/Rp6ZPjXd
+xehwSxM/
+-----END PRIVATE KEY-----`
+	block1, _ := pem.Decode([]byte(clientKey1))
+	//key, err := asym.PrivateKeyFromDER(block.Bytes)
+	//assert.NoError(t, err)
+	key1, err := asym.PrivateKeyFromDER(block1.Bytes)
 	assert.NoError(t, err)
-	assert.True(t, ok)
+	assert.NotNil(t, key1)
+	fmt.Println("key1 type = ", key1.Type())
+
+	block2, _ := pem.Decode([]byte(clientKey2))
+	//key, err := asym.PrivateKeyFromDER(block.Bytes)
+	//assert.NoError(t, err)
+	key2, err := asym.PrivateKeyFromDER(block2.Bytes)
+	assert.NoError(t, err)
+	assert.NotNil(t, key2)
+	fmt.Println("key2 type = ", key2.Type())
+
 }
