@@ -23,8 +23,8 @@ import (
 )
 
 var (
-	plainHex  = "68656c6c6f20636861696e6d616b6572"
-	pubHex    = "3059301306072a8648ce3d020106082a811ccf5501822d03420004fb0d63136159d1ddbb5154291a1839d166ecefdadcc7d324069d971b562cf08cca80a82c0ec41e03acc2c4e60c83a4b86640850a6b7df3a705d4a1681830210b"
+	plainHex  = "56616c6172206d6f7267756c69732e"
+	pubHex    = "3059301306072a8648ce3d020106082a811ccf5501822d0342000415fcadb4ffdb5d014864ab6e7a3f4d30d6515584077be7559ab08a24a91811d902c07fc49e4b03b5dbd33ac6bbf5d6823baeb8e08c973225af45d544103a4e3c"
 	testCases = []struct {
 		sigHex string
 	}{
@@ -41,7 +41,8 @@ var (
 		//{"3045022000eca4bf4fad8b925d385d40351250e208c399323a98e6397243cdbb20bc106e022100e7ed1c3d94f7b3fe065ee347cdaf6df60a23514f85f6e5b4b1ab9a129bfc2e27"},
 		//{"3044022000161a10915a22b5724e067d693a2501cd1f028a610f1270d581898b334742f8022004107331a8808cecf784d0996222a06e6f824c9cc6d53ece7c8712de77a69e5d"},
 		//{"3045022000eca4bf4fad8b925d385d40351250e208c399323a98e6397243cdbb20bc106e022100e7ed1c3d94f7b3fe065ee347cdaf6df60a23514f85f6e5b4b1ab9a129bfc2e27"},
-		{"3044021fc69b65d90279b29eda8d9bca424b4ebde6bb9a0c8683e3a3ebb8268d82dc7f022100e52bf823bf59919bc75bc27ad296ccb9dfd3d2a9f1f94738d78efb368a2f570f"},
+		//{"3044021fc69b65d90279b29eda8d9bca424b4ebde6bb9a0c8683e3a3ebb8268d82dc7f022100e52bf823bf59919bc75bc27ad296ccb9dfd3d2a9f1f94738d78efb368a2f570f"},
+		{"30440220001bef09646f1a9e7a71c2d78f670082c1ae374e0389174e333381d7d6f2febb02201ab0d04b5fd86389d21b425a4ee934a9b2cc592b9a5152725b25448404b96a18"},
 	}
 )
 
@@ -126,7 +127,8 @@ func TestSansecHSMSignature_Verify_TencentSM(t *testing.T) {
 		pubKey, err := txsm2.UnmarshalPublicKey(pubBytes)
 		assert.NoError(t, err)
 
-		ok := pubKey.Verify(plain, sigBytes)
+		ok, err := pubKey.Verify(plain, sigBytes)
+		assert.NoError(t, err)
 		assert.True(t, ok)
 		if !ok {
 			fmt.Printf("index = %d\nplainHex = %s\npubHex = %s\nsigHex=%s\n", i, plainHex, pubHex, testCase.sigHex)
