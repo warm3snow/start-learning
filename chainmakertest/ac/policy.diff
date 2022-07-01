@@ -1,0 +1,253 @@
+[
+ {
+  "policy": {
+   "role_list": [
+    "CONSENSUS"
+   ],
+   "rule": "ANY",
+   "org_list": null
+  },
+  "resource_name": "ACCOUNT_MANAGER-CHARGE_GAS_FOR_MULTI_ACCOUNT"
+ },
+ {
+  "policy": {
+   "role_list": [
+    "ADMIN"
+   ],
+   "rule": "MAJORITY",
+   "org_list": null
+  },
+  "resource_name": "ACCOUNT_MANAGER-SET_ADMIN"
+ },
+ {
+  "policy": {
+   "role_list": [
+    "ADMIN"
+   ],
+   "rule": "ANY",
+   "org_list": [
+    "wx-org1.chainmaker.org"
+   ]
+  },
+  "resource_name": "ARCHIVE"
+ },
+ {
+  "policy": {
+   "role_list": [
+    "CLIENT",
+    "ADMIN",
+    "LIGHT"
+   ],
+   "rule": "ANY",
+   "org_list": null
+  },
+  "resource_name": "CERT_MANAGE-CERT_ADD"
+ },
+ {
+  "policy": {
+   "role_list": [
+    "CLIENT",
+    "ADMIN",
+    "LIGHT"
+   ],
+   "rule": "ANY",
+   "org_list": null
+  },
+  "resource_name": "CERT_MANAGE-CERT_ALIAS_ADD"
+ },
+ {
+  "policy": {
+   "role_list": [
+    "ADMIN"
+   ],
+   "rule": "MAJORITY",
+   "org_list": null
+  },
+  "resource_name": "CHAIN_CONFIG-ALTER_ADDR_TYPE"
+ },
+ {
+  "policy": {
+   "role_list": [
+    "ADMIN"
+   ],
+   "rule": "ANY",
+   "org_list": null
+  },
+  "resource_name": "CHAIN_CONFIG-CERTS_FREEZE"
+ },
+ {
+  "policy": {
+   "role_list": [
+    "ADMIN"
+   ],
+   "rule": "MAJORITY",
+   "org_list": null
+  },
+  "resource_name": "CHAIN_CONFIG-ENABLE_OR_DISABLE_GAS"
+ },
+ {
+  "policy": {
+   "role_list": [
+    "ADMIN"
+   ],
+   "rule": "MAJORITY",
+   "org_list": null
+  },
+  "resource_name": "CHAIN_CONFIG-SET_ACCOUNT_MANAGER_ADMIN"
+ },
+ {
+  "policy": {
+   "role_list": [
+    "ADMIN"
+   ],
+   "rule": "MAJORITY",
+   "org_list": null
+  },
+  "resource_name": "CHAIN_CONFIG-SET_INVOKE_BASE_GAS"
+ },
+ {
+  "policy": {
+   "role_list": [
+    "ADMIN"
+   ],
+   "rule": "MAJORITY",
+   "org_list": null
+  },
+  "resource_name": "CONFIG"
+ },
+ {
+  "policy": {
+   "role_list": [
+    "CONSENSUS"
+   ],
+   "rule": "ANY",
+   "org_list": null
+  },
+  "resource_name": "CONSENSUS"
+ },
+ {
+  "policy": {
+   "role_list": [
+    "ADMIN"
+   ],
+   "rule": "MAJORITY",
+   "org_list": null
+  },
+  "resource_name": "CONTRACT_MANAGE-GRANT_CONTRACT_ACCESS"
+ },
+ {
+  "policy": {
+   "role_list": [
+    "ADMIN"
+   ],
+   "rule": "MAJORITY",
+   "org_list": null
+  },
+  "resource_name": "CONTRACT_MANAGE-REVOKE_CONTRACT_ACCESS"
+ },
+ {
+  "policy": {
+   "role_list": [
+    "ADMIN"
+   ],
+   "rule": "MAJORITY",
+   "org_list": null
+  },
+  "resource_name": "CONTRACT_MANAGE-VERIFY_CONTRACT_ACCESS"
+ },
+ {
+  "policy": {
+   "role_list": [
+    "CLIENT",
+    "ADMIN"
+   ],
+   "rule": "ANY",
+   "org_list": null
+  },
+  "resource_name": "INVOKE_CONTRACT"
+ },
+ {
+  "policy": {
+   "role_list": [
+    "CONSENSUS",
+    "COMMON"
+   ],
+   "rule": "ANY",
+   "org_list": null
+  },
+  "resource_name": "P2P"
+ },
+ {
+  "policy": {
+   "role_list": [
+    "CLIENT",
+    "ADMIN"
+   ],
+   "rule": "ANY",
+   "org_list": null
+  },
+  "resource_name": "PRIVATE_COMPUTE"
+ },
+ {
+  "policy": {
+   "role_list": null,
+   "rule": "FORBIDDEN",
+   "org_list": null
+  },
+  "resource_name": "PUBKEY_MANAGE-PUBKEY_ADD"
+ },
+ {
+  "policy": {
+   "role_list": null,
+   "rule": "FORBIDDEN",
+   "org_list": null
+  },
+  "resource_name": "PUBKEY_MANAGE-PUBKEY_DELETE"
+ },
+ {
+  "policy": {
+   "role_list": [
+    "CONSENSUS",
+    "COMMON",
+    "CLIENT",
+    "ADMIN"
+   ],
+   "rule": "ANY",
+   "org_list": null
+  },
+  "resource_name": "READ"
+ },
+ {
+  "policy": {
+   "role_list": [
+    "ADMIN"
+   ],
+   "rule": "SELF",
+   "org_list": null
+  },
+  "resource_name": "SELF_CONFIG"
+ },
+ {
+  "policy": {
+   "role_list": [
+    "LIGHT",
+    "CLIENT",
+    "ADMIN"
+   ],
+   "rule": "ANY",
+   "org_list": null
+  },
+  "resource_name": "SUBSCRIBE"
+ },
+ {
+  "policy": {
+   "role_list": [
+    "CLIENT",
+    "ADMIN"
+   ],
+   "rule": "ANY",
+   "org_list": null
+  },
+  "resource_name": "WRITE"
+ }
+]
