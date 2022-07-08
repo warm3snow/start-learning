@@ -92,7 +92,7 @@ func TestGmsslSM2_parrallel(t *testing.T) {
 		assert.True(t, ok)
 	}
 	var wg sync.WaitGroup
-	for i := 0; i < 100000; i++ {
+	for i := 0; i < 1000; i++ {
 		wg.Add(1)
 		go signVerifyFunc(&wg)
 	}

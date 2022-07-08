@@ -1,13 +1,14 @@
 package cryptotest
 
 import (
+	"crypto"
 	"crypto/ecdsa"
 	"crypto/elliptic"
 	"crypto/rand"
+	"crypto/rsa"
 	"crypto/sha256"
 	"encoding/hex"
 	"fmt"
-	"log"
 	"math/big"
 	"testing"
 
@@ -40,6 +41,30 @@ func TestP256Key(t *testing.T) {
 		big.NewInt(0).SetBytes(yb),
 	}, digest[:], sig)
 	assert.True(t, ok)
+}
+func TestECDSAEcc(t *testing.T) {
+	pri, _ := rsa.GenerateKey(rand.Reader, 1024)
+	encryptedBytes, err := rsa.EncryptOAEP(
+		sha256.New(),
+		rand.Reader,
+		&pri.PublicKey,
+		[]byte("测试哈哈哈"), //需要加密的字符串
+		nil)
+	assert.NoError(t, err)
+	fmt.Printf("enc1: %s\n", hex.EncodeToString(encryptedBytes))
 
-	log.Fatalf("failed to initialize pkcs11 handle, err = %s", err)
+	encryptedBytes, err = rsa.EncryptOAEP(
+		sha256.New(),
+		rand.Reader,
+		&pri.PublicKey,
+		[]byte("测试哈哈哈"), //需要加密的字符串
+		nil)
+	assert.NoError(t, err)
+	fmt.Printf("enc1: %s\n", hex.EncodeToString(encryptedBytes))
+
+	decryptedBytes, err := pri.Decrypt(nil, encryptedBytes, &rsa.OAEPOptions{Hash: crypto.SHA256})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println("decrypted message: ", string(decryptedBytes))
 }
