@@ -100,6 +100,6 @@ func TestGmsslSM2_parrallel(t *testing.T) {
 	wg.Wait()
 }
 
-//func FuzzTestGMSSL(f *testing.F) {
-//
-//}
+func TestCgoParallel(t *testing.T) {
+
+}
