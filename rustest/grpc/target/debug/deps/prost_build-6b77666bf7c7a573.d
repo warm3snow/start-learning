@@ -1,0 +1,16 @@
+/Users/hxy/go/src/github.com/warm3snow/start-learning/learning-grpc/target/debug/deps/prost_build-6b77666bf7c7a573.rmeta: /Users/hxy/.cargo/registry/src/github.com-1ecc6299db9ec823/prost-build-0.8.0/src/lib.rs /Users/hxy/.cargo/registry/src/github.com-1ecc6299db9ec823/prost-build-0.8.0/src/ast.rs /Users/hxy/.cargo/registry/src/github.com-1ecc6299db9ec823/prost-build-0.8.0/src/code_generator.rs /Users/hxy/.cargo/registry/src/github.com-1ecc6299db9ec823/prost-build-0.8.0/src/extern_paths.rs /Users/hxy/.cargo/registry/src/github.com-1ecc6299db9ec823/prost-build-0.8.0/src/ident.rs /Users/hxy/.cargo/registry/src/github.com-1ecc6299db9ec823/prost-build-0.8.0/src/message_graph.rs /Users/hxy/.cargo/registry/src/github.com-1ecc6299db9ec823/prost-build-0.8.0/src/path.rs
+
+/Users/hxy/go/src/github.com/warm3snow/start-learning/learning-grpc/target/debug/deps/libprost_build-6b77666bf7c7a573.rlib: /Users/hxy/.cargo/registry/src/github.com-1ecc6299db9ec823/prost-build-0.8.0/src/lib.rs /Users/hxy/.cargo/registry/src/github.com-1ecc6299db9ec823/prost-build-0.8.0/src/ast.rs /Users/hxy/.cargo/registry/src/github.com-1ecc6299db9ec823/prost-build-0.8.0/src/code_generator.rs /Users/hxy/.cargo/registry/src/github.com-1ecc6299db9ec823/prost-build-0.8.0/src/extern_paths.rs /Users/hxy/.cargo/registry/src/github.com-1ecc6299db9ec823/prost-build-0.8.0/src/ident.rs /Users/hxy/.cargo/registry/src/github.com-1ecc6299db9ec823/prost-build-0.8.0/src/message_graph.rs /Users/hxy/.cargo/registry/src/github.com-1ecc6299db9ec823/prost-build-0.8.0/src/path.rs
+
+/Users/hxy/go/src/github.com/warm3snow/start-learning/learning-grpc/target/debug/deps/prost_build-6b77666bf7c7a573.d: /Users/hxy/.cargo/registry/src/github.com-1ecc6299db9ec823/prost-build-0.8.0/src/lib.rs /Users/hxy/.cargo/registry/src/github.com-1ecc6299db9ec823/prost-build-0.8.0/src/ast.rs /Users/hxy/.cargo/registry/src/github.com-1ecc6299db9ec823/prost-build-0.8.0/src/code_generator.rs /Users/hxy/.cargo/registry/src/github.com-1ecc6299db9ec823/prost-build-0.8.0/src/extern_paths.rs /Users/hxy/.cargo/registry/src/github.com-1ecc6299db9ec823/prost-build-0.8.0/src/ident.rs /Users/hxy/.cargo/registry/src/github.com-1ecc6299db9ec823/prost-build-0.8.0/src/message_graph.rs /Users/hxy/.cargo/registry/src/github.com-1ecc6299db9ec823/prost-build-0.8.0/src/path.rs
+
+/Users/hxy/.cargo/registry/src/github.com-1ecc6299db9ec823/prost-build-0.8.0/src/lib.rs:
+/Users/hxy/.cargo/registry/src/github.com-1ecc6299db9ec823/prost-build-0.8.0/src/ast.rs:
+/Users/hxy/.cargo/registry/src/github.com-1ecc6299db9ec823/prost-build-0.8.0/src/code_generator.rs:
+/Users/hxy/.cargo/registry/src/github.com-1ecc6299db9ec823/prost-build-0.8.0/src/extern_paths.rs:
+/Users/hxy/.cargo/registry/src/github.com-1ecc6299db9ec823/prost-build-0.8.0/src/ident.rs:
+/Users/hxy/.cargo/registry/src/github.com-1ecc6299db9ec823/prost-build-0.8.0/src/message_graph.rs:
+/Users/hxy/.cargo/registry/src/github.com-1ecc6299db9ec823/prost-build-0.8.0/src/path.rs:
+
+# env-dep:PROTOC=/Users/hxy/.cargo/registry/src/github.com-1ecc6299db9ec823/prost-build-0.8.0/third-party/protobuf/protoc-osx-x86_64
+# env-dep:PROTOC_INCLUDE=/Users/hxy/.cargo/registry/src/github.com-1ecc6299db9ec823/prost-build-0.8.0/third-party/protobuf/include
