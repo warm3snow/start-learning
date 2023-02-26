@@ -1,6 +1,6 @@
 module chainmaker.org/gotest
 
-go 1.16
+go 1.18
 
 require (
 	chainmaker.org/chainmaker/common/v2 v2.3.0
