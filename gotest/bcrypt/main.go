@@ -8,18 +8,20 @@
 package main
 
 import (
+	"encoding/base64"
 	"fmt"
 	"golang.org/x/crypto/bcrypt"
 )
 
 func main() {
-	password := []byte("MyDarkSecret")
+	password := []byte("123456")
 
 	// Hashing the password with the default cost of 10
 	hashedPassword, err := bcrypt.GenerateFromPassword(password, bcrypt.DefaultCost)
 	if err != nil {
 		panic(err)
 	}
+	fmt.Println(base64.StdEncoding.EncodeToString(hashedPassword))
 	fmt.Println(string(hashedPassword))
 
 	// Comparing the password with the hash

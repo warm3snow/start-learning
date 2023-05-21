@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io"
 	"math"
+	"strconv"
 	"testing"
 
 	"github.com/pkg/errors"
@@ -36,4 +37,24 @@ func TestMakeMap(t *testing.T) {
 
 func TestHexDump(t *testing.T) {
 	fmt.Println(hex.Dump([]byte("hello world")))
+}
+
+func TestStrconv(t *testing.T) {
+	//var appId int64 = 1000000000
+	//appIdStr := strconv.FormatInt(appId, 10)
+	//fmt.Println("appIdStr", appIdStr)
+
+	appIdBytes := []byte("1000000000")
+
+	appId, _ := strconv.ParseInt(string(appIdBytes), 10, 64)
+	fmt.Println("appId", appId)
+}
+
+func TestNil(t *testing.T) {
+	var err error
+	var err2 error
+	fmt.Println(err == nil)
+	fmt.Println(&err)
+	fmt.Println(&err2)
+
 }
