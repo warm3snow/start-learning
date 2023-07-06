@@ -2,7 +2,9 @@ package std
 
 import (
 	"encoding/hex"
+	"encoding/json"
 	"fmt"
+	"github.com/stretchr/testify/assert"
 	"io"
 	"math"
 	"strconv"
@@ -57,4 +59,33 @@ func TestNil(t *testing.T) {
 	fmt.Println(&err)
 	fmt.Println(&err2)
 
+}
+
+type SliceTest struct {
+	IntList []int `json:"IntList"`
+}
+
+func TestSlicePrintf(t *testing.T) {
+	var slice []int
+	sliceTest1 := &SliceTest{
+		IntList: slice,
+	}
+	sliceTest1JsonBytes, err := json.Marshal(sliceTest1)
+	assert.NoError(t, err)
+	fmt.Println(string(sliceTest1JsonBytes))
+
+	slice2 := make([]int, 0)
+	sliceTest2 := &SliceTest{
+		IntList: slice2,
+	}
+	sliceTest2JsonBytes, err := json.Marshal(sliceTest2)
+	assert.NoError(t, err)
+	fmt.Println(string(sliceTest2JsonBytes))
+}
+
+func TestIntMap(t *testing.T) {
+	var intMap map[int]int
+
+	v := intMap[100]
+	fmt.Println(v)
 }
