@@ -11,6 +11,7 @@ package errocode
 import (
 	"encoding/json"
 	"fmt"
+	"io/ioutil"
 	"sort"
 )
 
@@ -49,7 +50,7 @@ func errorCodeToJson() error {
 	}
 	sort.Ints(errCodes)
 
-	var items []Item
+	var itemsMap = make(map[int][]Item)
 	for _, code := range errCodes {
 		item := Item{
 			Key:           ErrMessage[ErrCode(code)][0],
@@ -57,15 +58,21 @@ func errorCodeToJson() error {
 			FeatureTypeId: 1,
 			Describe:      errorRangeToDesc[code/100],
 		}
-		fmt.Printf("code: %d, descIndex: %d,  item: %+v\n", code, code/100, item)
-		items = append(items, item)
+		//fmt.Printf("code: %d, descIndex: %d,  item: %+v\n", code, code/100, item)
+		itemsMap[code/100] = append(itemsMap[code/100], item)
 	}
 
-	itemsJson, err := json.Marshal(items)
-	if err != nil {
-		return err
-	}
+	for code, items := range itemsMap {
+		itemsJson, err := json.Marshal(items)
+		if err != nil {
+			return err
+		}
 
-	fmt.Println(string(itemsJson))
+		fmt.Println(string(itemsJson))
+		err = ioutil.WriteFile(fmt.Sprintf("%s.json", errorRangeToDesc[code]), itemsJson, 0644)
+		if err != nil {
+			return err
+		}
+	}
 	return nil
 }

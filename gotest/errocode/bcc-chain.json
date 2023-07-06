@@ -1,0 +1,1 @@
+[{"key":"FailedOperation.GetTBCCChainService","value":"获取TBCC链服务失败","featureTypeId":1,"describe":"bcc-chain"},{"key":"FailedOperation.GetMemberChainService","value":"获取联盟成员链访问服务失败","featureTypeId":1,"describe":"bcc-chain"},{"key":"FailedOperation.CreateMemberChainService","value":"创建联盟成员链访问服务失败","featureTypeId":1,"describe":"bcc-chain"}]
