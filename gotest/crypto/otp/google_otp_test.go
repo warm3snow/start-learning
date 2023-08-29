@@ -20,7 +20,8 @@ type GoogleAuthenticator2FaSha1 struct {
 }
 
 //otpauth://totp/ACME%20Co:john@example.com?secret=HXDMVJECJJWSRB3HWIZR4IFUGFTMXBOZ&issuer=ACME%20Co&algorithm=SHA1&digits=6&period=30
-const testSecret = "HXDMVJECJJWSRB3HWIZR4IFUGFTMXBOZ" //base32-no-padding-encoded-string
+//const testSecret = "HXDMVJECJJWSRB3HWIZR4IFUGFTMXBOZ" //base32-no-padding-encoded-string
+const testSecret = "ABCDEFGH234567MN" //base32-no-padding-encoded-string
 
 //Totp 计算Time-based One-time Password 数字
 func (m *GoogleAuthenticator2FaSha1) Totp() (code string, err error) {
