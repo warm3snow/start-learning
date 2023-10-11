@@ -11,6 +11,10 @@ import (
 	"github.com/tjfoc/gmsm/sm3"
 )
 
+var (
+	msg = []byte("hello world")
+)
+
 func Benchmark_SM3(b *testing.B) {
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {

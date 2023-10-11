@@ -52,15 +52,6 @@ func TestStrconv(t *testing.T) {
 	fmt.Println("appId", appId)
 }
 
-func TestNil(t *testing.T) {
-	var err error
-	var err2 error
-	fmt.Println(err == nil)
-	fmt.Println(&err)
-	fmt.Println(&err2)
-
-}
-
 type SliceTest struct {
 	IntList []int `json:"IntList"`
 }
