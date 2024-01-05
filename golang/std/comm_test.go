@@ -128,3 +128,21 @@ task:
 	// Print the parsed configuration for testing
 	fmt.Printf("%+v\n", config)
 }
+
+func TestChannel(t *testing.T) {
+	intChan := make(chan int)
+	go func() {
+		for i := 0; i < 10; i++ {
+			intChan <- i
+		}
+		close(intChan)
+	}()
+
+	for i := range intChan {
+		if i == 5 {
+			continue
+		}
+		fmt.Printf("the element in intChan is %d\n", i)
+	}
+	select {}
+}
